@@ -50,7 +50,7 @@ if __name__ == '__main__':
         except:
             logging.info("An exception occurred for file: " + f.name)  
 
-    system("id >> /data/results/info.txt")
-    system("ip a >> /data/results/info.txt")
+    system(f"id >> {args.output_path}/info.txt")
+    system(f"ip a >> {args.output_path}/info.txt")
 
     logging.info('finished')
